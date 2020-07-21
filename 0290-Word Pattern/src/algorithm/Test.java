@@ -28,6 +28,20 @@ class Solution {
         }
         return sb.toString().equals(pattern);
     }
+    public boolean wordPattern1(String pattern, String str) {
+        String[] words = str.split(" ");
+        if (words.length != pattern.length())
+            return false;
+        Map index = new HashMap();
+        for (Integer i = 0; i < words.length; ++i) {
+            Object o1 = index.put(pattern.charAt(i), i);
+            Object o2 = index.put(words[i], i);
+            if (o1 != o2) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 public class Test {
@@ -35,8 +49,8 @@ public class Test {
     public static void main(String[] args) {
         Solution solution = new Solution();
         String pattern = "abba";
-        String str = "dog dog dog dog";
-        boolean res = solution.wordPattern(pattern, str);
+        String str = "dog cat cat dog";
+        boolean res = solution.wordPattern1(pattern, str);
         if (res) {
             System.out.println("模式匹配");
         } else {
