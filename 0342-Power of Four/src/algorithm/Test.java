@@ -12,15 +12,18 @@ class Solution {
         }
         return num == 1;
     }
+
+    public boolean isPowerOfFour2(int num) {
+        return (num > 0) && ((num & (num - 1)) == 0) && ((num & 0xaaaaaaaa) == 0);
+    }
+
 }
 
 public class Test {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int num = 15;
-        int n = 16 & 16;
-        System.out.println("res:" + 15);
+        int num = 16;
         boolean res = solution.isPowerOfFour2(num);
         if (res) {
             System.out.println(num + "是4的幂指数");
